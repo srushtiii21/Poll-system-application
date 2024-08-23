@@ -2,8 +2,7 @@ const options = [
     { id: "option1", text: "JavaScript", votes: 0 },
     { id: "option2", text: "Python", votes: 0 },
     { id: "option3", text: "Java", votes: 0 },
-    { id: "options4", text: "C++", votes: 0 },
-    
+    { id: "option4", text: "C++", votes: 0 }, 
 ];
 
 function submitVote() {
@@ -11,14 +10,14 @@ function submitVote() {
     const selectedOption = document.querySelector('input[name="poll"]:checked');
     // console.log(selectedOption.value);
     
-    if (!selectedOption) {
+    if (!selectedOption){
         alert("Please select an option.");
         return;  
     }
 
     const optionId = selectedOption.value;
     const selectedOptionObj = options.find((option) => option.id === optionId);
-    console.log(selectedOptionObj);
+    // console.log(selectedOptionObj);
     if (selectedOptionObj) {
         selectedOptionObj.votes++;
         console.log(selectedOptionObj);
@@ -37,13 +36,12 @@ function displayResult() {
 
         const optionResult = document.createElement("div");
         optionResult.className = "option-result";
-        optionResult.innerHTML =
-            <span class="option-text">${option.text}</span>
+        optionResult.innerHTML =`<span class="option-text">${option.text}</span>
             <div class="bar-container">
-                <div class="bar" style="width:${barWidth}:"></div>
+                <div class="bar" style="width:${barWidth};"></div>
             </div>
-            <span class="percentage">${percentage}</span>
-            ;
+            <span class="percentage">${percentage}%</span>
+            `;
         
         result.appendChild(optionResult);
     })
